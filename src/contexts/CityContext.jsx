@@ -6,7 +6,7 @@ import {
   useReducer,
 } from "react";
 
-const Base_URL = "http://localhost:8000";
+const Base_URL = "http://localhost:8000/Worldwise/";
 
 const CityContext = createContext();
 
