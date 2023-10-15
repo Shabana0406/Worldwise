@@ -6,7 +6,7 @@ import {
   useReducer,
 } from "react";
 
-const Base_URL = "http://localhost:8000";
+const Base_URL = "https://shabana0406.github.io/city_data/city_data.json";
 
 const CityContext = createContext();
 
@@ -77,7 +77,7 @@ function CityProvider({ children }) {
     async function fetchCities() {
       dispatch({ type: "loading" });
       try {
-        const res = await fetch(`${Base_URL}/cities`);
+        const res = await fetch(`${Base_URL}`);
         const data = await res.json();
         dispatch({ type: "cities/loaded", payload: data });
       } catch {
@@ -99,7 +99,7 @@ function CityProvider({ children }) {
       dispatch({ type: "loading" });
 
       try {
-        const res = await fetch(`${Base_URL}/cities/${id}`);
+        const res = await fetch(`${Base_URL}/${id}`);
         const data = await res.json();
         dispatch({ type: "city/current", payload: data });
       } catch {
@@ -116,7 +116,7 @@ function CityProvider({ children }) {
     dispatch({ type: "loading" });
 
     try {
-      const res = await fetch(`${Base_URL}/cities`, {
+      const res = await fetch(`${Base_URL}`, {
         method: "POST",
         body: JSON.stringify(newCity),
         headers: {
@@ -138,7 +138,7 @@ function CityProvider({ children }) {
     dispatch({ type: "loading" });
 
     try {
-      const res = await fetch(`${Base_URL}/cities/${id}`, {
+      const res = await fetch(`${Base_URL}/${id}`, {
         method: "DELETE",
       });
       await res.json();
